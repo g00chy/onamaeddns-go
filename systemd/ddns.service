@@ -1,0 +1,12 @@
+[Unit]
+Description=onamae ddns service
+ConditionACPower=true
+After=network.target network-online.target systemd-networkd.service NetworkManager.service connman.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/docker-compose run --rm ddns
+WorkingDirectory=/home/ubuntu/work/ddns
+User=ubuntu
+KillMode=process
+TimeoutStopSec=900

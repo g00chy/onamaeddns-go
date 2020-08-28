@@ -1,0 +1,11 @@
+[Unit]
+Description=onamae ddns timer
+After=ddns.timer
+
+[Timer]
+OnCalendar=*-*-* *:*:01
+RandomizedDelaySec=3s
+Persistent=true
+
+[Install]
+WantedBy=timers.target

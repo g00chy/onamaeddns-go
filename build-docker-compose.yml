@@ -1,0 +1,35 @@
+version: "3.0"
+services:
+  go-build-amd:
+    image: golang:alpine
+    volumes:
+      - ./:/src
+    working_dir: /src
+    entrypoint: go build -o output/onamaeddns-amd
+    environment:
+      - GOOS=linux
+      - GOARCH=amd64
+  go-build-arm:
+    image: golang:alpine
+    volumes:
+      - ./:/src
+    working_dir: /src
+    entrypoint: go build -o output/onamaeddns-arm
+    environment:
+      - GOOS=linux
+      - GOARCH=arm64
+  go-build-windows:
+    image: golang:alpine
+    volumes:
+      - ./:/src
+    working_dir: /src
+    entrypoint: go build -o output/onamaeddns.exe
+    environment:
+      - GOOS=windows
+      - GOARCH=amd64
+  go-run:
+    image: golang:alpine
+    volumes:
+      - ./:/src
+    working_dir: /src
+    entrypoint: go run main.go
